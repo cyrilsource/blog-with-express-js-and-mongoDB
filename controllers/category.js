@@ -12,6 +12,6 @@ exports.createCategory = (req, res, next) => {
 
 exports.getAllCategories = (req, res, next) => {
   Category.find(function(err, categories) {
-    res.render('admin', { title: 'Admin', content: categories })
+    res.render('addPost', { title: 'Add a Post', content: categories })
   });
 }

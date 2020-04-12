@@ -1,0 +1,57 @@
+<h1 class="text-center">{{title}}</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <form method="post" action="admin/createCategory">
+        <h2>Create a post</h2>
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input name="title" type="text" class="form-control" id="title" aria-describedby="title">
+        </div>
+        <div class="form-group">
+          <label for="thumbnail">Add an image</label>
+          <input name="thumbnail" type="file" class="form-control-file" id="thumbnail">
+        </div>
+        <select name="category" id="category" class="custom-select">
+          <option selected>Choose a category</option>
+           {{# each content }}
+            <option value="{{ post_category }}">{{ post_category }}</option>
+          {{/each}}
+        </select>
+        <button type="submit" class="btn btn-primary">Create a post</button>
+      </form>
+    </div>
+     <div class="col-5 offset-md-1">
+        <form method="post" action="/admin/createCategory" class="mb-3">
+          <div class="form-group">
+            <label for="post_category">Create a category</label>
+            <input name="post_category" type="text" class="form-control" id="post_category" aria-describedby="post_category">
+          </div>
+          <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{# each content }}
+              <tr>
+                  <td>{{ post_category }}</td>
+                  <td>
+                    <form action="deleteCategory">
+                      <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                  </td>
+              </tr>
+            {{/each}}
+            <tr>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>
