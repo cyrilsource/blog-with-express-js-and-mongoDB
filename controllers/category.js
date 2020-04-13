@@ -10,6 +10,12 @@ exports.createCategory = (req, res, next) => {
     .catch(error => res.status(400).json({ error }))
 }
 
+exports.deleteCategory = (req, res, next) => {
+  Category.deleteOne({ _id: req.params.id })
+  .then(() => res.redirect('back'))
+  .catch(error => res.status(400).json({ error }))
+}
+
 exports.getAllCategories = (req, res, next) => {
   Category.find(function(err, categories) {
     res.render('addPost', { title: 'Add a Post', content: categories })

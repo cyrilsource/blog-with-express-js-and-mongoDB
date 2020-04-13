@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+var bodyParser = require('body-parser')
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -10,7 +11,7 @@ var mongoose = require('mongoose')
 // Import function exported by newly installed node modules.
 const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access');
 
-var indexRouter = require('./routes/index');
+var postRouter = require('./routes/post');
 const categoryRouter = require('./routes/category')
 var usersRouter = require('./routes/users');
 
@@ -31,8 +32,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.json())
 
-app.use('/', indexRouter);
+app.use('/images', express.static(path.join(__dirname, 'images')))
+app.use('/', postRouter);
 app.use('/admin', categoryRouter);
 app.use('/users', usersRouter);
 

@@ -3,22 +3,28 @@
 <div class="container">
   <div class="row">
     <div class="col-6">
-      <form method="post" action="admin/createCategory">
+      <form method="post" action="" enctype="multipart/form-data">
         <h2>Create a post</h2>
         <div class="form-group">
           <label for="title">Title</label>
           <input name="title" type="text" class="form-control" id="title" aria-describedby="title">
         </div>
         <div class="form-group">
-          <label for="thumbnail">Add an image</label>
-          <input name="thumbnail" type="file" class="form-control-file" id="thumbnail">
+          <label for="image">Add an image</label>
+          <input name="image" type="file" class="form-control-file" id="image">
         </div>
-        <select name="category" id="category" class="custom-select">
-          <option selected>Choose a category</option>
-           {{# each content }}
-            <option value="{{ post_category }}">{{ post_category }}</option>
-          {{/each}}
-        </select>
+        <div class="form-group">
+          <select name="category" id="category" class="custom-select">
+            <option selected>Choose a category</option>
+            {{# each content }}
+              <option value="{{ post_category }}">{{ post_category }}</option>
+            {{/each}}
+          </select>
+        </div>
+         <div class="form-group">
+          <label for="description">Description</label>
+          <textarea name="description" class="form-control" id="description" rows="3"></textarea>
+        </div>
         <button type="submit" class="btn btn-primary">Create a post</button>
       </form>
     </div>
@@ -42,7 +48,7 @@
               <tr>
                   <td>{{ post_category }}</td>
                   <td>
-                    <form action="deleteCategory">
+                    <form action="/admin/deleteCategory/{{ _id }}" method="post">
                       <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                   </td>
