@@ -1,7 +1,9 @@
 const Post = require('../models/Posts')
 
 exports.getAllPosts = (req, res, next) => {
-  res.render('index', { title: 'My Blog' })
+  Post.find(function(err, posts) {
+    res.render('admin', { title: 'Admin', content: posts })
+  });
 }
 
 exports.createPost = (req, res, next) => {
@@ -12,6 +14,12 @@ exports.createPost = (req, res, next) => {
     thumbnail: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
   })
   post.save()
-    .then(() => res.redirect('back'))
+    .then(() => res.redirect('/admin'))
     .catch(error => res.status(400).json({ error }))
+}
+
+exports.deletePost = (req, res, next) => {
+  Post.deleteOne({ _id: req.params.id })
+  .then(() => res.redirect('back'))
+  .catch(error => res.status(400).json({ error }))
 }

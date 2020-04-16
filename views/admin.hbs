@@ -1,0 +1,33 @@
+<h1 class="text-center">{{title}}</h1>
+<p class="text-center">Welcome to {{title}}</p>
+
+<a href="/admin/addPost" class="center btn btn-primary btn-lg active mb-3" role="button" aria-pressed="true">Add a Post</a>
+
+<table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Thumbnail</th>
+              <th scope="col">Title</th>
+              <th scope="col">Category</th>
+              <th scope="col">Edit</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{# each content }}
+              <tr>
+                  <td><img style="width: 150px" src="{{ thumbnail }}" alt=""></td>
+                  <td>{{ title }}</td>
+                  <td>{{ category }}</td>
+                  <td><button type="submit" class="btn btn-info">Edit post</button></td>
+                  <td>
+                    <form action="/admin/{{ _id }}" method="post">
+                      <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                  </td>
+              </tr>
+            {{/each}}
+            <tr>
+            </tr>
+          </tbody>
+        </table>
