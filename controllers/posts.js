@@ -1,12 +1,6 @@
 const Post = require('../models/Posts')
 const fs = require('fs')
 
-exports.getAllPosts = (req, res, next) => {
-  Post.find(function(err, posts) {
-    res.render('admin', { title: 'Admin', content: posts })
-  });
-}
-
 exports.createPost = (req, res, next) => {
   console.log()
   delete req.body._id;
@@ -30,4 +24,17 @@ exports.deletePost = (req, res, next) => {
       });
     })
     .catch(error => res.status(500).json({ error }))
+}
+
+exports.getOnePost = (req, res, next) => {
+  Post.findOne({ _id: req.params.id }, function(err, post) {
+    console.log(post)
+    res.render('editPost', {  title: 'Edit the post', content: post })
+  });
+}
+
+exports.getAllPosts = (req, res, next) => {
+  Post.find(function(err, posts) {
+    res.render('admin', { title: 'Admin', content: posts })
+  });
 }

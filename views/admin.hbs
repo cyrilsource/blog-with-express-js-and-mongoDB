@@ -19,7 +19,7 @@
                   <td><img style="width: 150px" src="{{ thumbnail }}" alt=""></td>
                   <td>{{ title }}</td>
                   <td>{{ category }}</td>
-                  <td><button type="submit" class="btn btn-info">Edit post</button></td>
+                  <td><a href="/admin/editPost/{{ _id }}" class="btn btn-info" role="button" aria-pressed="true">Edit a Post</a></td>
                   <td>
                     <form action="/admin/{{ _id }}" method="post">
                       <button type="submit" class="btn btn-danger">Delete</button>

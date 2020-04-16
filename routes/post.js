@@ -8,6 +8,9 @@ const postsCtrl = require('../controllers/posts')
 /* GET home page. */
 router.get('/admin', postsCtrl.getAllPosts)
 router.post('/admin/addPost', multer, postsCtrl.createPost)
+
+/* GET one post. */
+router.get('/admin/editPost/:id', postsCtrl.getOnePost)
 // route delete via post, because method in the delete form
 router.post('/admin/:id', postsCtrl.deletePost)
 
