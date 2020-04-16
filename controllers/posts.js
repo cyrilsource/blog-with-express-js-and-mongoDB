@@ -1,4 +1,5 @@
 const Post = require('../models/Posts')
+const fs = require('fs')
 
 exports.getAllPosts = (req, res, next) => {
   Post.find(function(err, posts) {
@@ -19,7 +20,14 @@ exports.createPost = (req, res, next) => {
 }
 
 exports.deletePost = (req, res, next) => {
-  Post.deleteOne({ _id: req.params.id })
-  .then(() => res.redirect('back'))
-  .catch(error => res.status(400).json({ error }))
+  Post.findOne({ _id: req.params.id })
+    .then(post => {
+      const filename = post.thumbnail.split('/images/')[1]
+      fs.unlink(`images/${filename}`, () => {
+        Post.deleteOne({ _id: req.params.id })
+          .then(() => res.redirect('back'))
+          .catch(error => res.status(400).json({ error }))
+      });
+    })
+    .catch(error => res.status(500).json({ error }))
 }
