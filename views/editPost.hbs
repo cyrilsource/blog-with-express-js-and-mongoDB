@@ -1,5 +1,32 @@
 <h1 class="text-center">{{title}}</h1>
 <a href="/admin" class="center btn btn-primary btn-lg active mb-3" role="button" aria-pressed="true">&laquo; Previous</a>
-{{#content }}
-<h2>{{ title }}</h2>
-{{/content }}
+
+{{#post }}
+<div class="container">
+  <h2 class="mb-3">{{ title }}</h2>
+  <div class="row">
+    <div class="col-6">
+      <form method="post" action="?_method=PUT">
+        <h3>Edit post</h3>
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input name="title" type="text" value="{{ title }}" class="form-control" id="title" aria-describedby="title">
+        </div>
+        <div class="form-group">
+          <select name="category" id="category" class="custom-select">
+            <option selected>{{ category }}</option>
+            {{/post }}
+            {{# each categories }}
+              <option value="{{ post_category }}">{{ post_category }}</option>
+            {{/each}}
+          </select>
+        </div>
+        {{#post }}
+         <div class="form-group">
+          <label for="description">Description</label>
+          <textarea name="description" class="form-control" id="description" rows="3">{{ description }}</textarea>
+        </div>
+        <input type="hidden" name="_method" value="PUT">
+        <button type="submit" class="btn btn-primary">Edit post</button>
+      </form>
+      {{/post }}

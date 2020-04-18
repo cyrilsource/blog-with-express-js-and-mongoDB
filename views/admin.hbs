@@ -9,6 +9,7 @@
               <th scope="col">Thumbnail</th>
               <th scope="col">Title</th>
               <th scope="col">Category</th>
+              <th scope="col">Slug</th>
               <th scope="col">Edit</th>
               <th scope="col">Delete</th>
             </tr>
@@ -16,9 +17,10 @@
           <tbody>
             {{# each content }}
               <tr>
-                  <td><img style="width: 150px" src="{{ thumbnail }}" alt=""></td>
+                  <td><a href="/admin/deleteImage/{{ _id }}"><img style="width: 150px" src="{{ thumbnail }}" alt="" title="change the picture"></a></td>
                   <td>{{ title }}</td>
                   <td>{{ category }}</td>
+                  <td>{{ slug }}</td>
                   <td><a href="/admin/editPost/{{ _id }}" class="btn btn-info" role="button" aria-pressed="true">Edit a Post</a></td>
                   <td>
                     <form action="/admin/{{ _id }}" method="post">

@@ -22,6 +22,8 @@ mongoose.connect('mongodb+srv://root:koala@cluster0-sehch.gcp.mongodb.net/test?r
   .catch(() => console.log('Connexion à MongoDB échouée !'))
 
 var app = express();
+// to override the post method in the html form and having put method
+var methodOverride = require('method-override');
 
 // view engine setup
 app.engine('.hbs', expressHbs({defaultLayout: 'layout', extname: '.hbs', handlebars: allowInsecurePrototypeAccess(handlebars)}));
@@ -33,6 +35,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json())
+app.use(methodOverride('_method'))
 
 app.use('/public', express.static(path.join(__dirname, 'public')))
 app.use('/images', express.static(path.join(__dirname, 'images')))

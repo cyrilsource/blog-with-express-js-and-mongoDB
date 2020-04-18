@@ -1,0 +1,17 @@
+<h1 class="text-center">{{title}}</h1>
+{{#content }}
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <form method="post" action="" enctype="multipart/form-data">
+        <h2 class="mb-3">Upload a new image for <i>{{ title }}</i></h2>
+        <div class="form-group">
+          <label for="image">Add an image</label>
+          <input name="image" type="file" class="form-control-file" id="image">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit new image</button>
+      </form>
+    </div>
+  </div>
+</div>
+{{/content }}
