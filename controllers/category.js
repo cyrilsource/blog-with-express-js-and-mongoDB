@@ -18,6 +18,6 @@ exports.deleteCategory = (req, res, next) => {
 
 exports.getAllCategories = (req, res, next) => {
   Category.find(function(err, categories) {
-    res.render('addPost', { title: 'Add a Post', content: categories })
+    res.render('admin/addPost', { title: 'Add a Post', content: categories })
   });
 }

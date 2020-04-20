@@ -40,7 +40,7 @@ app.use(methodOverride('_method'))
 app.use('/public', express.static(path.join(__dirname, 'public')))
 app.use('/images', express.static(path.join(__dirname, 'images')))
 app.use('/', postRouter);
-app.use('/admin', categoryRouter);
+app.use('/', categoryRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
