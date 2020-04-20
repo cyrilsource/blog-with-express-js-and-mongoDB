@@ -12,7 +12,8 @@ var mongoose = require('mongoose')
 const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access');
 
 var postRouter = require('./routes/post');
-const categoryRouter = require('./routes/category')
+var optionRouter = require('./routes/option');
+var categoryRouter = require('./routes/category')
 var usersRouter = require('./routes/users');
 
 mongoose.connect('mongodb+srv://root:koala@cluster0-sehch.gcp.mongodb.net/test?retryWrites=true&w=majority',
@@ -41,6 +42,7 @@ app.use('/public', express.static(path.join(__dirname, 'public')))
 app.use('/images', express.static(path.join(__dirname, 'images')))
 app.use('/', postRouter);
 app.use('/', categoryRouter);
+app.use('/', optionRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler

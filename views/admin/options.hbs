@@ -1,0 +1,20 @@
+<h1 class="text-center">{{title}}</h1>
+
+{{#content }}
+<div class="container">
+  <h2 class="mb-3">Change options</h2>
+  <div class="row">
+    <div class="col-6">
+      <form method="post" action="?_method=PUT">
+        <div class="form-group">
+          <label for="title">Excerpt length</label>
+          <input name="excerpt_length" type="number" value="{{ excerpt_length }}" class="form-control" id="excerpt_length" aria-describedby="title">
+        </div>
+        <input type="hidden" name="_method" value="PUT">
+        <button type="submit" class="btn btn-primary">Send new options</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{{/content }}
