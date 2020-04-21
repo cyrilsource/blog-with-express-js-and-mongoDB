@@ -3,7 +3,10 @@ const router = express.Router()
 
 const optionsCtrl = require('../controllers/options')
 
-/* GET posts list home page for backend. */
+/* GET options. */
 router.get('/admin/options', optionsCtrl.getAllOptions)
+
+/* UPDATE options. */
+router.put('/admin/options/:id', optionsCtrl.updateOptions)
 
 module.exports = router

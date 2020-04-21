@@ -16,3 +16,12 @@ exports.getAllOptions = (req, res, next) => {
     }
   })
 }
+
+exports.updateOptions = (req, res, next) => {
+  const postObject = {
+    ...req.body
+  }
+  Option.updateOne({ _id: req.params.id }, { ...postObject, _id: req.params.id })
+  .then(() => res.redirect('back'))
+    .catch(error => res.status(404).json({ error }))
+}

@@ -1,5 +1,6 @@
 const Post = require('../models/Posts')
 const Category = require('../models/Category')
+const Option = require('../models/Options')
 const fs = require('fs')
 //package to make a slug with title
 const slug = require('slug')
@@ -88,13 +89,30 @@ exports.changeImage = (req, res, next) => {
 // post list for backend
 exports.getAllPosts = (req, res, next) => {
   Post.find(function(err, posts) {
+    console.log(posts)
     res.render('admin/home', { title: 'Admin', content: posts })
   });
 }
 
 // post list for frontend
 exports.getAllPosts_front = (req, res, next) => {
-  Post.find(function(err, posts) {
-    res.render('home', { title: 'Admin', content: posts })
-  });
+  Option.find(function(err, options) {
+    // get the excerpt words length
+    const excerpt = options[0].excerpt_length
+    Post.find(function(err, posts) {
+      // create a new array with the new value excerpt
+      var postsArray = []
+      for (var i = 0; i < posts.length; i++) {
+        // create object and inside put every value + excerpt value
+        const postsObject = {}
+        postsObject.title = posts[i].title
+        postsObject.slug = posts[i].slug
+        postsObject.category = posts[i].category
+        // excerpt value from description and the limit words in options
+        postsObject.excerpt = posts[i].description.split(' ').slice(0, excerpt).join(' ')
+        postsArray.push(postsObject)
+      }
+      res.render('home', { title: 'Front', content: postsArray })
+    })
+  })
 }
