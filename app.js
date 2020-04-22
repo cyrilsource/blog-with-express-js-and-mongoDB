@@ -4,7 +4,8 @@ var bodyParser = require('body-parser')
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var handlebars = require('handlebars')
+var handlebars = require('handlebars');
+var HandlebarsIntl = require('handlebars-intl');
 var expressHbs = require('express-handlebars');
 var mongoose = require('mongoose')
 
@@ -29,6 +30,8 @@ var methodOverride = require('method-override');
 // view engine setup
 app.engine('.hbs', expressHbs({defaultLayout: 'layout', extname: '.hbs', handlebars: allowInsecurePrototypeAccess(handlebars)}));
 app.set('view engine', '.hbs');
+
+HandlebarsIntl.registerWith(handlebars);
 
 app.use(logger('dev'));
 app.use(express.json());

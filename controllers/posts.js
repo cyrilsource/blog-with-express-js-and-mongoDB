@@ -106,8 +106,10 @@ exports.getAllPosts_front = (req, res, next) => {
       for (var i = 0; i < posts.length; i++) {
         // create object and inside put every value + excerpt value
         const postsObject = {}
+
         postsObject.title = posts[i].title
         postsObject.slug = posts[i].slug
+        postsObject.date = posts[i].created_at.getFullYear()
         postsObject.category = posts[i].category
         // excerpt value from description and the limit words in options
         postsObject.excerpt = posts[i].description.split(' ').slice(0, excerpt).join(' ')

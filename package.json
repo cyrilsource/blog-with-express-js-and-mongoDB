@@ -13,6 +13,7 @@
     "express": "~4.16.1",
     "express-handlebars": "^4.0.3",
     "fs": "0.0.1-security",
+    "handlebars-intl": "^1.1.2",
     "hbs": "~4.0.4",
     "http-errors": "~1.6.3",
     "method-override": "^3.0.0",
