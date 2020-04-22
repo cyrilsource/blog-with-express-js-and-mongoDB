@@ -1,9 +1,12 @@
 const Category = require('../models/Category')
+// package to make a slug with title
+const slug = require('slug')
 
 exports.createCategory = (req, res, next) => {
   delete req.body._id;
   const category = new Category({
-    ...req.body
+    ...req.body,
+    slug: slug(req.body.post_category)
   })
   category.save()
     .then(() => res.redirect('back'))

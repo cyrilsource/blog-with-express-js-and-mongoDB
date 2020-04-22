@@ -2,7 +2,7 @@ const Post = require('../models/Posts')
 const Category = require('../models/Category')
 const Option = require('../models/Options')
 const fs = require('fs')
-//package to make a slug with title
+// package to make a slug with title
 const slug = require('slug')
 
 exports.createPost = (req, res, next) => {
