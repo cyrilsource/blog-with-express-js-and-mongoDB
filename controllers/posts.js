@@ -11,7 +11,8 @@ exports.createPost = (req, res, next) => {
   const post = new Post({
     ...req.body,
     thumbnail: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,
-    slug: slug(req.body.title)
+    slug: slug(req.body.title),
+    created_at: Date.now()
   })
   post.save()
     .then(() => res.redirect('/admin/home'))

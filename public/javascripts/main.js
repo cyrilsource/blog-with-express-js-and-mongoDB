@@ -12,11 +12,11 @@ inpFile.addEventListener('change', function () {
     previewImage.style.display = 'block'
 
     reader.addEventListener('load', function () {
-      console.log(this)
       previewImage.setAttribute('src', this.result)
     })
     reader.readAsDataURL(file)
   } else {
+    /* refresh upload system when someone come back without choosing a file */
     previewDefaultText.style.display = null
     previewImage.style.display = null
     previewImage.setAttribute('src', '')
