@@ -7,3 +7,16 @@ body {
 a {
   color: blueviolet;
 }
+
+/* preview image upload */
+.image-preview {
+  width: 300px;
+  min-height: 100px;
+  border: 2px solid #dddddd;
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #cccccc;
+}
