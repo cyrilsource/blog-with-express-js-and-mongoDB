@@ -12,6 +12,7 @@ exports.createPost = (req, res, next) => {
     ...req.body,
     thumbnail: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,
     slug: slug(req.body.title),
+    category_slug: slug(req.body.category),
     created_at: Date.now()
   })
   post.save()
@@ -23,7 +24,8 @@ exports.updatePost = (req, res, next) => {
   // every data except the picture
   const postObject = {
     ...req.body,
-    slug: slug(req.body.title)
+    slug: slug(req.body.title),
+    category_slug: slug(req.body.category)
   }
   Post.updateOne({ _id: req.params.id }, { ...postObject, _id: req.params.id })
   .then(() => res.redirect('/admin/home'))
@@ -111,11 +113,12 @@ exports.getAllPosts_front = (req, res, next) => {
         postsObject.slug = posts[i].slug
         postsObject.date = posts[i].created_at.getFullYear()
         postsObject.category = posts[i].category
+        postsObject.category_slug = slug(posts[i].category)
         // excerpt value from description and the limit words in options
         postsObject.excerpt = posts[i].description.split(' ').slice(0, excerpt).join(' ')
         postsArray.push(postsObject)
       }
-      res.render('home', { title: 'Front', content: postsArray })
+      res.render('home', { title: 'Front', layout: 'layout_front', content: postsArray })
     })
   })
 }

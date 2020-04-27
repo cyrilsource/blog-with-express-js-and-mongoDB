@@ -8,4 +8,6 @@ router.post('/admin/createCategory', categoryCtrl.createCategory)
 // route delete via post, because method in the delete form
 router.post('/admin/deleteCategory/:id', categoryCtrl.deleteCategory)
 
+router.get('/category/:slug', categoryCtrl.getOneCategory)
+
 module.exports = router

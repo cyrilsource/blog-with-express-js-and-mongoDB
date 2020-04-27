@@ -6,6 +6,7 @@ const postSchema = mongoose.Schema({
   slug: { type: String, required: true },
   thumbnail: { type: String },
   category: { type: String, ref: 'Category', required: true },
+  category_slug: { type: String },
   created_at: { type: Date }
 })
 

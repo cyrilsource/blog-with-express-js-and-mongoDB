@@ -24,3 +24,10 @@ exports.getAllCategories = (req, res, next) => {
     res.render('admin/addPost', { title: 'Add a Post', content: categories })
   });
 }
+
+// get one category for frontend
+exports.getOneCategory = (req, res, next) => {
+  Category.findOne({ slug: req.params.slug }, function(err, category) {
+    res.render('category', { content: category })
+  })
+}

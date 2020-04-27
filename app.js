@@ -28,7 +28,10 @@ var app = express();
 var methodOverride = require('method-override');
 
 // view engine setup
-app.engine('.hbs', expressHbs({defaultLayout: 'layout', extname: '.hbs', handlebars: allowInsecurePrototypeAccess(handlebars)}));
+app.engine('.hbs', expressHbs({defaultLayout: 'layout',
+  layoutDir: path.join(__dirname, 'views/layout'),
+  extname: '.hbs',
+  handlebars: allowInsecurePrototypeAccess(handlebars)}));
 app.set('view engine', '.hbs');
 
 HandlebarsIntl.registerWith(handlebars);

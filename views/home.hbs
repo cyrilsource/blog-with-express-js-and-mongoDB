@@ -1,7 +1,8 @@
 {{# each content }}
   <a href="/{{ slug }}"><h2>{{ title }}</h2></a>
   <i>{{ date }}</i>
-  <p>{{ category }}</p>
+  <br>
+  <a href="/category/{{ category_slug}}">{{ category }}</a>
   <p>{{ excerpt }}</p>
 {{/each}}
 
