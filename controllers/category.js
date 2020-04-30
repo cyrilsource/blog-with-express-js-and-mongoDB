@@ -1,4 +1,5 @@
 const Category = require('../models/Category')
+const Post = require('../models/Posts')
 // package to make a slug with title
 const slug = require('slug')
 
@@ -28,6 +29,8 @@ exports.getAllCategories = (req, res, next) => {
 // get one category for frontend
 exports.getOneCategory = (req, res, next) => {
   Category.findOne({ slug: req.params.slug }, function(err, category) {
-    res.render('category', { content: category })
+    Post.find({ category_slug: req.params.slug }, function(err, post) {
+      res.render('category', { layout: 'layout_front', post: post, category: category })
+    })
   })
 }

@@ -78,7 +78,7 @@ exports.getOnePost = (req, res, next) => {
 // get one post for frontend
 exports.getOnePost_front = (req, res, next) => {
   Post.findOne({ slug: req.params.slug }, function(err, post) {
-    res.render('single', { post: post })
+    res.render('single', { layout: 'layout_front', post: post })
   })
 }
 
@@ -114,11 +114,12 @@ exports.getAllPosts_front = (req, res, next) => {
         postsObject.date = posts[i].created_at.getFullYear()
         postsObject.category = posts[i].category
         postsObject.category_slug = slug(posts[i].category)
+        postsObject.thumbnail = posts[i].thumbnail
         // excerpt value from description and the limit words in options
         postsObject.excerpt = posts[i].description.split(' ').slice(0, excerpt).join(' ')
         postsArray.push(postsObject)
       }
-      res.render('home', { title: 'Front', layout: 'layout_front', content: postsArray })
+      res.render('home', { title: 'My sweet blog', layout: 'layout_front', content: postsArray })
     })
   })
 }

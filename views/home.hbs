@@ -1,8 +1,22 @@
-{{# each content }}
-  <a href="/{{ slug }}"><h2>{{ title }}</h2></a>
-  <i>{{ date }}</i>
-  <br>
-  <a href="/category/{{ category_slug}}">{{ category }}</a>
-  <p>{{ excerpt }}</p>
-{{/each}}
-
+<h1 class="center">{{ title }}</h1>
+<section class="card">
+	{{# each content }}
+    <div class="item">
+      <div class="thumbnail">
+        <img src="{{ thumbnail }}">
+      </div><!-- .thumbnail -->
+      <article>
+        <div class="item_title">
+          <h2>{{ title }}</h2>
+        </div><!-- .item_title -->
+        <strong><a class="category" href="/category/{{ category_slug}}">{{ category }}</a></strong>
+        <div class="item_excerpt">
+          <p>{{ excerpt }}</p>
+        </div><!-- .item_excerpt -->
+        <div class="item_button">
+          <a href="/{{ slug }}"><p class="button">Découvrir la recette</p></a>
+        </div><!-- .item_button -->
+      </article>
+    </div>
+	{{/each}}
+</section><!-- .section_activity -->

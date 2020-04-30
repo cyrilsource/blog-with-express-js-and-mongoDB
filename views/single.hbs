@@ -1,5 +1,17 @@
-{{#post }}
-  <h1>{{ title }}</h1>
-  <p>{{ category }}</p>
-  <p>{{ description }}</p>
-{{/post }}
+<main class="main">
+  {{#post }}
+      <div class="center">
+        <h1>{{ title }}</h1>
+        <strong><a class="category" href="/category/{{ category_slug}}">{{ category }}</a></strong>
+      </div>
+    {{/post }}
+  <article class="content">
+    <div class="content_body">
+      {{#post }}
+        <img src="{{ thumbnail }}">
+        <p>{{ description }}</p>
+      {{/post }}
+    </div>
+  </article>
+</main>
+
