@@ -17,7 +17,7 @@ var optionRouter = require('./routes/option');
 var categoryRouter = require('./routes/category')
 var usersRouter = require('./routes/users');
 
-mongoose.connect('mongodb+srv://root:koala@cluster0-sehch.gcp.mongodb.net/test?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://root:password@cluster0-sehch.gcp.mongodb.net/test?retryWrites=true&w=majority',
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
